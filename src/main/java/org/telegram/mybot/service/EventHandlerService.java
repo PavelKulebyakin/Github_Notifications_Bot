@@ -11,7 +11,7 @@ public class EventHandlerService {
 
     private final GitHubProperties properties;
 
-    public String generateWebhookLink(String repositoryName) {
-        return properties.getWebhookBasePath() + "/" + repositoryName;
+    public String generateWebhookLink(long chatId, String repositoryName) {
+        return properties.getWebhookBasePath() + "/" + chatId;
     }
 }

@@ -3,6 +3,7 @@ package org.telegram.mybot.bot;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.experimental.FieldDefaults;
+import org.springframework.stereotype.Component;
 import org.telegram.mybot.service.LoggingService;
 import org.telegram.mybot.service.TelegramFacade;
 import org.telegram.telegrambots.meta.api.methods.BotApiMethod;
@@ -12,6 +13,7 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.telegram.telegrambots.starter.SpringWebhookBot;
 
+@Component
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class GitHubNotificationBot extends SpringWebhookBot implements TelegramSender {
 
