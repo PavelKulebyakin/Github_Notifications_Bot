@@ -49,6 +49,9 @@ public class MessageHandlerService {
                     response = executeAddCommand(chatId);
                     stateService.setCurrentState(chatId, ENTER_NAME_STATE);
                 }
+                else if (LINK_COMMAND.equals(messageText)) {
+                    response = executeLinkCommand(chatId);
+                }
                 else {
                     response = executeDefault(chatId);
                 }
@@ -65,12 +68,16 @@ public class MessageHandlerService {
         return response;
     }
 
+    private SendMessage executeLinkCommand(long chatId) {
+        return getSendMessage(chatId, DEFAULT_MESSAGE); //TODO add link functionality
+    }
+
     private SendMessage executeInvalidName(long chatId) {
         return getSendMessage(chatId, INCORRECT_NAME_MESSAGE);
     }
 
     private SendMessage executeEnterName(long chatId, String repositoryName) {
-        String link = eventHandler.generateWebhookLink(repositoryName);
+        String link = eventHandler.generateWebhookLink(chatId, repositoryName);
         return getSendMessage(chatId, format(ADD_MESSAGE_2, link));
     }
 

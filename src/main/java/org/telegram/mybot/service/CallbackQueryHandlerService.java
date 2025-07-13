@@ -8,6 +8,6 @@ import org.telegram.telegrambots.meta.api.objects.CallbackQuery;
 public class CallbackQueryHandlerService {
 
     public BotApiMethod<?> processCallbackQuery(CallbackQuery callbackQuery) {
-        return null;
+        return null;                                                                //TODO
     }
 }
