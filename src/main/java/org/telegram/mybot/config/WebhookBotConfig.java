@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.telegram.mybot.bot.GitHubNotificationBot;
+import org.telegram.mybot.bot.TelegramSender;
 import org.telegram.mybot.service.LoggingService;
 import org.telegram.mybot.service.TelegramFacade;
 import org.telegram.telegrambots.meta.api.methods.updates.SetWebhook;
@@ -21,7 +22,7 @@ public class WebhookBotConfig {
     }
 
     @Bean
-    public WebhookBot telegramBot(SetWebhook setWebhook, TelegramFacade updateHandler, LoggingService log) {
+    public TelegramSender telegramBot(SetWebhook setWebhook, TelegramFacade updateHandler, LoggingService log) {
         return new GitHubNotificationBot(setWebhook, properties.getBotToken(), properties.getBotUsername(),
                 properties.getWebhookPath(), updateHandler, log);
     }
